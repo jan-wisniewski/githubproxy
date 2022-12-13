@@ -2,3 +2,15 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
+config:
+  url:
+    repositories:
+      start-part: https://api.github.com/users/
+      end-part: /repos
+
+logging:
+  level:
+    com:
+      wisniewskijan:
+        name=INFO:
