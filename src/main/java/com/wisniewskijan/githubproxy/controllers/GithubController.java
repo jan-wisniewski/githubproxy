@@ -1,13 +1,11 @@
 package com.wisniewskijan.githubproxy.controllers;
 
+import com.wisniewskijan.githubproxy.config.aop.annotations.Restrict;
 import com.wisniewskijan.githubproxy.dtos.fetchingData.RepositoryDto;
 import com.wisniewskijan.githubproxy.dtos.response.ResponseDto;
 import com.wisniewskijan.githubproxy.services.GithubService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +19,9 @@ public class GithubController {
         this.githubService = githubService;
     }
 
+    @Restrict(isProperHeader = true)
     @GetMapping("/repositories/{username}")
-    public ResponseEntity<List<ResponseDto>> getAllRepositories(@PathVariable String username) {
+    public ResponseEntity<List<ResponseDto>> getAllRepositories(@RequestHeader("Accept") String acceptHeader, @PathVariable String username) {
         return ResponseEntity.ok(githubService.getAllRepositories(username));
     }
 

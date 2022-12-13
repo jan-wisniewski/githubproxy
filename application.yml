@@ -11,6 +11,11 @@ config:
     branches:
       start-part: https://api.github.com/repos/
       end-part: /branches
+  headers:
+    incorrect: application/xml
+    correct: application/json
+    key: Accept
+
 
 logging:
   level:
