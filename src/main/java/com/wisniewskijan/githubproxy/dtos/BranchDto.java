@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @Data
 public class BranchDto {
-    private String repositoryName;
     private String name;
     private CommitDto commit;
 }

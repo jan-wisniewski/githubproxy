@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class RepositoryDto {
-    private Long id;
     private String name;
     private String fork;
     private OwnerDto owner;

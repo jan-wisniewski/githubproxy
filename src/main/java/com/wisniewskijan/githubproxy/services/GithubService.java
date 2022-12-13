@@ -7,18 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Service
 public class GithubService {
-
-    @Value("${config.url.repositories.start-part}")
-    private String repositoryUrlStartPart;
-
-    @Value("${config.url.repositories.end-part}")
-    private String repositoryUrlEndPart;
 
     private WebReaderService webReaderService;
 
@@ -33,7 +26,7 @@ public class GithubService {
         if (Objects.isNull(username) || StringUtils.containsWhitespace(username) || username.equals("")) {
             throw new IllegalArgumentException("Incorrect username");
         }
-        return webReaderService.readData(repositoryUrlStartPart + username + repositoryUrlEndPart);
+        return webReaderService.readRepositoriesForUsername(username);
     }
 
 }

@@ -8,6 +8,9 @@ config:
     repositories:
       start-part: https://api.github.com/users/
       end-part: /repos
+    branches:
+      start-part: https://api.github.com/repos/
+      end-part: /branches
 
 logging:
   level:
