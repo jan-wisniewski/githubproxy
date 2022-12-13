@@ -1,13 +1,13 @@
-package com.wisniewskijan.githubproxy.dtos;
+package com.wisniewskijan.githubproxy.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Data
-public class BranchDto {
+public class BranchResponseDto {
     private String name;
-    private CommitDto commit;
+    private String lastCommitSha;
 }

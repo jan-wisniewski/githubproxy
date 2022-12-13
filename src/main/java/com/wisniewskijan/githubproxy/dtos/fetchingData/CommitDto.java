@@ -1,4 +1,4 @@
-package com.wisniewskijan.githubproxy.dtos;
+package com.wisniewskijan.githubproxy.dtos.fetchingData;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.wisniewskijan.githubproxy.services;
 
-import com.wisniewskijan.githubproxy.dtos.BranchDto;
-import com.wisniewskijan.githubproxy.dtos.RepositoryDto;
+import com.wisniewskijan.githubproxy.dtos.fetchingData.BranchFetchDto;
+import com.wisniewskijan.githubproxy.dtos.fetchingData.RepositoryDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,16 +36,16 @@ public class WebReaderService {
         logger.info("Enter readData with arguments: {}", username);
         RepositoryDto[] response = restTemplate.getForObject(repositoryUrlStartPart + username + repositoryUrlEndPart, RepositoryDto[].class);
         if (Objects.nonNull(response)) {
-            Arrays.stream(response).forEach(e -> e.setBranches(readBranchesForRepository(username, e.getName())));
+            Arrays.stream(response).filter(e -> e.getFork().equals("false")).forEach(e -> e.setBranches(readBranchesForRepository(username, e.getName())));
             return Arrays.asList(response);
         } else {
-            logger.info("Reponse for url is null");
+            logger.info("Response for url is null");
             return new ArrayList<>();
         }
     }
 
-    private List<BranchDto> readBranchesForRepository(String username, String repositoryName) {
-        return Arrays.asList(Objects.requireNonNull(restTemplate.getForObject(branchUrlStartPart + username + "/" + repositoryName + branchUrlEndPart, BranchDto[].class)));
+    private List<BranchFetchDto> readBranchesForRepository(String username, String repositoryName) {
+        return Arrays.asList(Objects.requireNonNull(restTemplate.getForObject(branchUrlStartPart + username + "/" + repositoryName + branchUrlEndPart, BranchFetchDto[].class)));
     }
 
 }

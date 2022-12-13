@@ -1,6 +1,7 @@
 package com.wisniewskijan.githubproxy.controllers;
 
-import com.wisniewskijan.githubproxy.dtos.RepositoryDto;
+import com.wisniewskijan.githubproxy.dtos.fetchingData.RepositoryDto;
+import com.wisniewskijan.githubproxy.dtos.response.ResponseDto;
 import com.wisniewskijan.githubproxy.services.GithubService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class GithubController {
     }
 
     @GetMapping("/repositories/{username}")
-    public ResponseEntity<List<RepositoryDto>> getAllRepositories(@PathVariable String username) {
+    public ResponseEntity<List<ResponseDto>> getAllRepositories(@PathVariable String username) {
         return ResponseEntity.ok(githubService.getAllRepositories(username));
     }
 

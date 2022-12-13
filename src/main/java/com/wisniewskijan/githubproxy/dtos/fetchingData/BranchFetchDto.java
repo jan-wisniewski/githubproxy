@@ -1,4 +1,4 @@
-package com.wisniewskijan.githubproxy.dtos;
+package com.wisniewskijan.githubproxy.dtos.fetchingData;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Data
-public class OwnerDto {
-    private String login;
+public class BranchFetchDto {
+    private String name;
+    private CommitDto commit;
 }
