@@ -21,7 +21,7 @@ public class GithubController {
 
     @Restrict(isProperHeader = true)
     @GetMapping("/repositories/{username}")
-    public ResponseEntity<List<ResponseDto>> getAllRepositories(@RequestHeader("Accept") String acceptHeader, @PathVariable String username) {
+    public ResponseEntity<List<ResponseDto>> getAllRepositories(@PathVariable String username) {
         return ResponseEntity.ok(githubService.getAllRepositories(username));
     }
 
