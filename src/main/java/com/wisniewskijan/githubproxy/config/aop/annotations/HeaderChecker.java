@@ -1,5 +1,6 @@
 package com.wisniewskijan.githubproxy.config.aop.annotations;
 
+import com.wisniewskijan.githubproxy.exceptions.BadHeaderException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -31,7 +32,7 @@ public class HeaderChecker {
         Restrict annotation = signature.getMethod().getAnnotation(Restrict.class);
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         if (annotation.isProperHeader() && !isProperHeader(request)) {
-            throw new IllegalStateException("Resource accepts only: "+ Arrays.toString(correctHeaders));
+            throw new BadHeaderException("AAA");
         }
     }
 
