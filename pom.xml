@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.wisniewskijan</groupId>
     <artifactId>GitHubProxy</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>GitHubProxy</name>
     <description>GitHubProxy</description>
     <properties>
@@ -63,6 +63,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>app</finalName>
     </build>
-
 </project>

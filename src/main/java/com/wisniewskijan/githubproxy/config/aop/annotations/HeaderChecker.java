@@ -17,9 +17,6 @@ import java.util.Arrays;
 @Component
 public class HeaderChecker {
 
-    @Value("${config.headers.incorrect}")
-    private String[] incorrectHeaders;
-
     @Value("${config.headers.correct}")
     private String[] correctHeaders;
 
@@ -32,7 +29,7 @@ public class HeaderChecker {
         Restrict annotation = signature.getMethod().getAnnotation(Restrict.class);
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         if (annotation.isProperHeader() && !isProperHeader(request)) {
-            throw new BadHeaderException("AAA");
+            throw new BadHeaderException("");
         }
     }
 
