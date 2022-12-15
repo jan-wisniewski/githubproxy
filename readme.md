@@ -11,38 +11,30 @@ Clone the project
   git clone https://github.com/jan-wisniewski/githubproxy
 ```
 
-Go to the project directory and build executable jar in target folder
+Go to the project directory and run app by command
 
 ```bash
-mvn clean install
-```
-
-After that go to main folder in app and create docker image via .Dockerfile file
-
-```bash
-docker build -f Dockerfile -t githubproxy
-```
-
-And run container
-
-```bash
-docker run -p 8080:8080 -t githubproxy
+mvn spring-boot:run
 ```
 
 After that you be able to using app at localhost:8080
 
 ## EndPoints
 
-To read information about user repositories open swagger
+To read information about user repositories open postman, and type in url section
+
+http://localhost:8080/api/repositories/<username>
+
+Also you have to add proper header: 
 
 ```bash
-/swagger-ui/index.html
+Accept: application/json
 ```
-In github-controller section click "Try it out", and type username in required parameter. Click execute
 
 ## Response Type
 
-Code 404 - username cannot be found via Gitub API
+Code 404 - username cannot be found via Gitub API<br>
+
 Code 200 - JSON Object with necessary information
 
 ## Stack
